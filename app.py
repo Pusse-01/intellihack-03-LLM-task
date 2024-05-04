@@ -15,9 +15,9 @@ from langchain.prompts import (
     HumanMessagePromptTemplate,
     SystemMessagePromptTemplate,
 )
-from load_env import load_env
+from dotenv import load_dotenv
 
-load_env()
+load_dotenv()
 
 st.set_page_config(page_title="AI Assistant - Smart Bank", page_icon="🦜")
 st.title("Smart Bank - AI Assistant")
@@ -30,7 +30,7 @@ if not openai_api_key:
 @st.cache_resource(ttl="1h")
 def configure_retriever():
     docs = []
-    loader = PyPDFLoader('docs\LLM Scenario.pdf')
+    loader = PyPDFLoader('docs\LLM Scenario 2.pdf')
     docs.extend(loader.load())
 
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
